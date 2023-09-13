@@ -1,0 +1,337 @@
+.snake-game {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0;
+}
+.snake-game-body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* game home */
+.game-home {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #00000088;
+    z-index: 18;
+}
+.game-logo.large {
+    border-radius: .8rem;
+}
+.game-home-title {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    margin: 16px 0;
+}
+.game-home-button {
+    margin-top: 16px;
+    color: #fff;
+    font-weight: bold;
+    width: 40%;
+    height: 40px;
+    max-width: 320px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5rem;
+    position: relative;
+}
+.game-home-button i {
+    margin-right: 8px;
+}
+.game-home-scores {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+.game-home-scores > div {
+    margin-top: 6px;
+    font-size: 15px;
+}
+.game-home-scores > div:first-of-type {
+    font-size: 22px;
+}
+.show-fruits-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+}
+.show-fruits-button {
+    background: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px 1px #00000066;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.show-fruits-button img {
+    width: 80%;
+    height: 80%;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.game-ranking, .game-fruits {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: #00000022;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.game-ranking-window {
+    box-sizing: border-box;
+    padding: 16px;
+    width: 80%;
+    height: 70%;
+    background: #fff;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.game-window-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.game-window-topbar i {
+    padding: 4px 8px;
+}
+.game-window-title {
+    font-weight: bold;
+}
+.game-ranking-list {
+    flex: 1;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 16px 0;
+}
+.game-record {
+    display: flex;
+    padding: 8px;
+}
+.game-record > * {
+    width: 16%;
+}
+.game-record > :last-child {
+    text-align: center;
+}
+.game-record > :nth-child(2) {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.game-fruits-list {
+    margin: 12px 0;
+    overflow: auto;
+}
+.fruit-group {
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+.fruit-group-image {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fruit-group-image img {
+    height: 80%;
+    aspect-ratio: 1/1;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+
+
+
+/* board */
+.snake-game-content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    font-size: 20px;
+    width: 100vw;
+    box-sizing: border-box;
+    max-width: 360px;
+}
+.game-topbar-score {
+    font-weight: bold;
+}
+.game-topbar-score span {
+    font-size: 16px;
+}
+.game-topbar-buttons i {
+    padding: 8px;
+}
+
+.board-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.snake-game-board * {
+    transition: none;
+}
+.board-row {
+    display: flex;
+    width: 100%;
+}
+.board-cell {
+    flex: 1;
+    aspect-ratio: 1/1;
+    background: #eee;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* fruit */
+.fruit-cell {
+    width: 100%;
+    height: 100%;
+}
+.board-cell img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center center;
+}
+/* snake */
+.snake-cell {
+    width: 100%;
+    height: 100%;
+}
+.snake-head {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    z-index: 1;
+}
+.snake-head.up img {
+    transform: rotate(270deg);
+}
+.snake-head.left img {
+    transform: rotate(180deg);
+}
+.snake-head.down img {
+    transform: rotate(90deg);
+}
+
+.fruit-groups {
+    padding: 16px;
+    overflow: auto;
+}
+.fruit-group {
+    margin-bottom: 8px;
+    align-items: center;
+    display: flex;
+}
+.fruit-image {
+    width: 8%;
+    aspect-ratio: 1/1;
+}
+.fruit-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+.fruit-description {
+    margin: 0 8px;
+    word-break: break-all;
+    flex: 1;
+}
+.directions-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.directions-row i {
+    margin: 0 4px;
+    margin-top: 6px;
+    border-radius: .5rem;
+    height: 56px;
+    width: 56px;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 480px) {
+    .game-directions {
+        flex: 1;
+    }
+    .board-container {
+        flex: 1;
+        min-height: 360px;
+        max-height: 360px;
+    }
+    .snake-game-board {
+        height: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    .board-row {
+        display: flex;
+        width: 100%;
+        flex: 1;
+    }
+}
+@media screen and (max-width: 480px) {
+    .board-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .snake-game-board {
+        width: 92%;
+        border-radius: 5px;
+    }
+}
