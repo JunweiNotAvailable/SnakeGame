@@ -1,5 +1,5 @@
 {
   "api": {
-    "invokeUrl": "https://tj6lhm8fb5.execute-api.ap-northeast-1.amazonaws.com/production"
+    "invokeUrl": "https://lkwpju0wtl.execute-api.ap-northeast-1.amazonaws.com/prod"
   }
 }

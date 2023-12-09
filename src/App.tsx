@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     async function loadRecords() {
-      const res: RecordProps[] = (await axios.get(`${config.api.invokeUrl}/rankings`)).data.Items;
+      const res: RecordProps[] = (await axios.get(`${config.api.invokeUrl}/scan`, { params: { table: 'PlayTime-GameScores' } })).data;
       setRecords(res.sort((a, b) => b.score - a.score));
       setLoading(false);
     }
@@ -30,23 +30,9 @@ function App() {
   // load user
   const loadUser = async (username: string) => {
     setLoading(true);
-    const userData: UserProps = (await axios.get(`${config.api.invokeUrl}/get-user?name=${username}`)).data.Item;
+    const userData: UserProps = (await axios.get(`${config.api.invokeUrl}/single`, {params: { table: 'Laijoig-Users', id: 'junwei_0551' }} )).data.Item;
     if (userData) {
       setUser(userData);
-    } else {
-      // create new user if not exist
-      const newUser: UserProps = {
-        name: username,
-        color: getRandomHexColor(),
-        aboutMe: '',
-        bosom: [],
-        taskDates: [],
-        saved: [],
-        avatar: '',
-        notifications: [],
-      };
-      setUser(newUser);
-      await axios.post(`${config.api.invokeUrl}/put-user`, newUser);
     }
     window.localStorage.setItem('playTimeUsername', username);
   }
